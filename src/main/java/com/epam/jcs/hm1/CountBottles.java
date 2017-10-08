@@ -1,10 +1,10 @@
-package com.epam.jcs;
+package com.epam.jcs.hm1;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Homework1 {
+public class CountBottles {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader (new InputStreamReader(System.in));
         String enteredStr = reader.readLine();
