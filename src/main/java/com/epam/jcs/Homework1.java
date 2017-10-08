@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class hw1 {
+public class Homework1 {
     public static void main(String[] args) throws IOException {
         BufferedReader reader = new BufferedReader (new InputStreamReader(System.in));
         String enteredStr = reader.readLine();
