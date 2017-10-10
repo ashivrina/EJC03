@@ -6,18 +6,22 @@ import java.io.InputStreamReader;
 
 public class CountBottles {
     public static void main(String[] args) throws IOException {
+        System.out.println("Please enter a number of green bottles on the wall");
         BufferedReader reader = new BufferedReader (new InputStreamReader(System.in));
-        String enteredStr = reader.readLine();
-        int numOfBottles = Integer.parseInt(enteredStr);
+        String enteredString = reader.readLine();
+        int enteredNumber = Integer.parseInt(enteredString);
+        countDown(enteredNumber);
+    }
 
-        if (numOfBottles >= 0) {
-            for (int i = numOfBottles; i >= 0; i--) {
+    private static void countDown(int numberOfBottles) {
+        if (numberOfBottles >= 0) {
+            for (int i = numberOfBottles; i >= 0; i--) {
                 if (i == 1) {
-                    System.out.println(i + " bottle standing on the wall.");
+                    System.out.println(i + " green bottle standing on the wall.");
                 } else if (i == 0) {
-                    System.out.println("All bottles've fallen. Go buy some more.");
+                    System.out.println("All green bottles've fallen. Go buy some more.");
                 } else {
-                    System.out.println(i + " bottles standing on the wall.");
+                    System.out.println(i + " green bottles standing on the wall.");
                 }
             }
         } else {
