@@ -28,4 +28,21 @@ public class TrafficLightTest {
     public void testDetermineColour2() {
         Assert.assertEquals("Red", TrafficLight.determineColour(3601));
     }
+
+    /**
+     * Test checks how negative integers are handled.
+     */
+    @Test
+    public void testDetermineColour3() {
+        Assert.assertEquals("Undefined. Enter a positive integer.", TrafficLight.determineColour(-2));
+    }
+
+    /**
+     * Test checks how entered numbers and not-numbers are handled.
+     */
+    @Test
+    public void testParseNumber() {
+        Assert.assertEquals(-1, TrafficLight.parseNumber("asd"));
+        Assert.assertEquals(10, TrafficLight.parseNumber("10"));
+    }
 }

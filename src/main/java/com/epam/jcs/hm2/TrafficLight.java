@@ -13,8 +13,7 @@ import java.io.InputStreamReader;
 public class TrafficLight {
 
     public static void main(String[] args) {
-
-        System.out.println(determineColour(readNumber()));
+        System.out.println(determineColour(parseNumber(readLine())));
     }
 
     /**
@@ -22,16 +21,26 @@ public class TrafficLight {
      *
      * @return parsed number of minutes entered by a user
      */
-    private static int readNumber() {
+    private static String readLine() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Please enter a number of minutes.");
-        String enteredString = null;
+        String enteredString;
         try {
             enteredString = reader.readLine();
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Something went terribly wrong.");
+            enteredString = "-1";
         }
-        int enteredNumber = Integer.parseInt(enteredString);
+        return enteredString;
+    }
+
+    public static int parseNumber(String enteredString) {
+        int enteredNumber;
+        try {
+            enteredNumber = Integer.parseInt(enteredString);
+        } catch (NumberFormatException e) {
+            enteredNumber = -1;
+        }
         return enteredNumber;
     }
 
