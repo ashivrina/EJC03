@@ -13,15 +13,16 @@ import java.io.InputStreamReader;
 public class TrafficLight {
 
     public static void main(String[] args) {
-        System.out.println(determineColour(parseNumber(readLine())));
+        TrafficLight trafficLight = new TrafficLight();
+        System.out.println(trafficLight.determineColour(trafficLight.parseNumber(trafficLight.readLine())));
     }
 
     /**
-     * Method that reads a number from console and returns a number of minutes.
+     * Method that reads a string from console and returns it.
      *
-     * @return parsed number of minutes entered by a user
+     * @return a string entered by a user
      */
-    private static String readLine() {
+    private String readLine() {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Please enter a number of minutes.");
         String enteredString;
@@ -34,7 +35,14 @@ public class TrafficLight {
         return enteredString;
     }
 
-    public static int parseNumber(String enteredString) {
+    /**
+     * Method that converts a string entered by a user into a number and returns the number.
+     *
+     *
+     * @param enteredString - string entered by a user
+     * @return number resulting from parsing the string
+     */
+    public int parseNumber(String enteredString) {
         int enteredNumber;
         try {
             enteredNumber = Integer.parseInt(enteredString);
@@ -50,7 +58,7 @@ public class TrafficLight {
      * @param minutes - entered number of minutes
      * @return color of the traffic light
      */
-    public static String determineColour(int minutes) {
+    public String determineColour(int minutes) {
         int cleanNumberOfMinutes = minutes % 60;
         int redLightMinutes = 2;
         int yellowLightMinutes = 3;
