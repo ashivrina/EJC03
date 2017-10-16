@@ -4,7 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
- * Class tests whether determineColour method of the TrafficLight test works correctly.
+ * Class tests whether determineColour and parseNumber methods of the TrafficLight test work correctly.
  *
  * @author Anna Shivrina
  */
