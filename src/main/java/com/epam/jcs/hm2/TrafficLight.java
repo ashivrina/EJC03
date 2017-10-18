@@ -69,12 +69,10 @@ public class TrafficLight {
             color = "Undefined. Enter a positive integer.";
         } else if (cleanNumberOfMinutes % trafficLightCycleMinutes < redLightMinutes) {
             color = "Red";
-        } else if ((cleanNumberOfMinutes % trafficLightCycleMinutes >= redLightMinutes) && (cleanNumberOfMinutes % trafficLightCycleMinutes < redLightMinutes + yellowLightMinutes)) {
+        } else if (cleanNumberOfMinutes % trafficLightCycleMinutes < redLightMinutes + yellowLightMinutes) {
             color = "Yellow";
-        } else if (cleanNumberOfMinutes % trafficLightCycleMinutes >= redLightMinutes + yellowLightMinutes) {
-            color = "Green";
         } else {
-            color = "Undefined. Don't know how this could have happened!";
+            color = "Green";
         }
         return color;
     }
