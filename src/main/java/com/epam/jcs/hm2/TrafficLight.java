@@ -14,42 +14,36 @@ public class TrafficLight {
 
     public static void main(String[] args) {
         TrafficLight trafficLight = new TrafficLight();
-        System.out.println(trafficLight.determineColour(trafficLight.parseNumber(trafficLight.readLine())));
-    }
-
-    /**
-     * Method that reads a string from console and returns it.
-     *
-     * @return a string entered by a user
-     */
-    private String readLine() {
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Please enter a number of minutes.");
-        String enteredString;
-        try {
-            enteredString = reader.readLine();
+        try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
+            System.out.println(trafficLight.getResult(reader.readLine()));
         } catch (IOException e) {
-            System.out.println("Something went terribly wrong.");
-            enteredString = "-1";
+            e.printStackTrace();
         }
-        return enteredString;
     }
 
     /**
-     * Method that converts a string entered by a user into a number and returns the number.
+     * Method checks if String is a number.
      *
+     * @param argument - String that needs to be checked
+     * @return - true if String is a number
+     */
+    private boolean isNumber(String argument) {
+        return argument.matches("[-+]?\\d+");
+    }
+
+    /**
+     * Method that converts a string into a number and returns the number.
      *
      * @param enteredString - string entered by a user
      * @return number resulting from parsing the string
+     * @throws IllegalArgumentException
      */
-    public int parseNumber(String enteredString) {
-        int enteredNumber;
-        try {
-            enteredNumber = Integer.parseInt(enteredString);
-        } catch (NumberFormatException e) {
-            enteredNumber = -1;
+    public int getNumberOfMinutes(String enteredString) {
+        if (isNumber(enteredString)) {
+            return Integer.parseInt(enteredString);
         }
-        return enteredNumber;
+
+        throw new IllegalArgumentException("You must enter number, you've entered " + enteredString);
     }
 
     /**
@@ -57,17 +51,19 @@ public class TrafficLight {
      *
      * @param minutes - entered number of minutes
      * @return color of the traffic light
+     * @throws RuntimeException
      */
     public String determineColour(int minutes) {
+        if (minutes < 0) {
+            throw new RuntimeException("Incorrect number entered: " + minutes);
+        }
         int cleanNumberOfMinutes = minutes % 60;
         int redLightMinutes = 2;
         int yellowLightMinutes = 3;
         int greenLightMinutes = 5;
         int trafficLightCycleMinutes = redLightMinutes + yellowLightMinutes + greenLightMinutes;
         String color;
-        if (cleanNumberOfMinutes < 0) {
-            color = "Undefined. Enter a positive integer.";
-        } else if (cleanNumberOfMinutes % trafficLightCycleMinutes < redLightMinutes) {
+        if (cleanNumberOfMinutes % trafficLightCycleMinutes < redLightMinutes) {
             color = "Red";
         } else if (cleanNumberOfMinutes % trafficLightCycleMinutes < redLightMinutes + yellowLightMinutes) {
             color = "Yellow";
@@ -75,5 +71,12 @@ public class TrafficLight {
             color = "Green";
         }
         return color;
+    }
+
+    /**
+     * Performs the operations to get the number and prints out the result.
+     */
+    private String getResult(String enteredString) {
+        return determineColour(getNumberOfMinutes(enteredString));
     }
 }
