@@ -1,6 +1,7 @@
 package com.epam.jcs.hm2;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -10,41 +11,46 @@ import org.junit.Test;
  */
 
 public class TrafficLightTest {
-    TrafficLight trafficLight = new TrafficLight();
+    private TrafficLight trafficLight;
 
-    /**
-     * Test takes border values and checks whether the correct String is returned.
-     */
-    @Test
-    public void testDetermineColour1() {
-
-        Assert.assertEquals("Red", trafficLight.determineColour(0));
-        Assert.assertEquals("Yellow", trafficLight.determineColour(2));
-        Assert.assertEquals("Green", trafficLight.determineColour(5));
+    @Before
+    public void setup() {
+        trafficLight = new TrafficLight();
     }
 
     /**
-     * Test checks whether values greater than 60 are interpreted correctly
+     * Test checks whether determineColour method returns a correct String.
      */
     @Test
-    public void testDetermineColour2() {
+    public void testDetermineColour() {
+        Assert.assertEquals("Red", trafficLight.determineColour(0));
+        Assert.assertEquals("Yellow", trafficLight.determineColour(2));
+        Assert.assertEquals("Green", trafficLight.determineColour(5));
         Assert.assertEquals("Red", trafficLight.determineColour(3601));
     }
 
     /**
-     * Test checks how negative integers are handled.
+     * Test checks whether the correct exception is thrown when a negative number is entered.
      */
-    @Test
-    public void testDetermineColour3() {
-        Assert.assertEquals("Undefined. Enter a positive integer.", trafficLight.determineColour(-2));
+    @Test (expected = RuntimeException.class)
+    public void testDetermineColourWithException() {
+        trafficLight.determineColour(-198);
     }
 
     /**
-     * Test checks how entered numbers and not-numbers are handled.
+     * Test checks whether numbers are interpreted correctly when String is parsed to a number.
      */
     @Test
-    public void testParseNumber() {
-        Assert.assertEquals(-1, trafficLight.parseNumber("asd"));
-        Assert.assertEquals(10, trafficLight.parseNumber("10"));
+    public void testGetNumberOfMinutes(){
+        Assert.assertEquals(10, trafficLight.getNumberOfMinutes("10"));
+        Assert.assertEquals(-100, trafficLight.getNumberOfMinutes("-100"));
+    }
+
+    /**
+     * Test checks whether the correct exception is thrown when you enter not a number.
+     */
+    @Test (expected = IllegalArgumentException.class)
+    public void testGetNumberOfMinutesWithException() {
+        trafficLight.getNumberOfMinutes("asdfh");
     }
 }
