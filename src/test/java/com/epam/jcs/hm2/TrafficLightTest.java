@@ -19,7 +19,7 @@ public class TrafficLightTest {
     }
 
     /**
-     * Test checks whether determineColour method returns a correct String.
+     * Test checks whether the determineColour method returns a correct String.
      */
     @Test
     public void testDetermineColour() {
