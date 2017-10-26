@@ -4,12 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class IdentifyMonth {
+public class Month {
+
     public static void main(String[] args) {
-        IdentifyMonth identifyMonth = new IdentifyMonth();
+        Month month = new Month();
         System.out.println("Please enter a number of a month.");
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
-            System.out.println(getMonth(identifyMonth.getNumber(reader.readLine())));
+            System.out.println(getMonth(month.getNumber(reader.readLine())));
         } catch (IOException e) {
             e.printStackTrace();
         }
