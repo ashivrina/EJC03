@@ -7,7 +7,7 @@ import java.io.InputStreamReader;
 public class IdentifyMonth {
     public static void main(String[] args) {
         IdentifyMonth identifyMonth = new IdentifyMonth();
-        System.out.println("Please enter a number of a month");
+        System.out.println("Please enter a number of a month.");
         try (BufferedReader reader = new BufferedReader(new InputStreamReader(System.in))) {
             System.out.println(getMonth(identifyMonth.getNumber(reader.readLine())));
         } catch (IOException e) {
