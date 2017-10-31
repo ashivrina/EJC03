@@ -29,6 +29,6 @@ public abstract class Duck {
     }
 
     public String swim() {
-        return "All ducks can swim. That's what they do!";
+        return "All ducks can swim. That's what they do!!";
     }
 }
