@@ -16,16 +16,16 @@ public abstract class Duck {
         return flyBehaviour.fly();
     }
 
-    public void setFlyBehaviour(FlyBehaviour fb) {
-        flyBehaviour = fb;
+    public void setFlyBehaviour(FlyBehaviour flyBehaviour) {
+        this.flyBehaviour = flyBehaviour;
     }
 
     public String performQuack() {
         return quackBehaviour.quack();
     }
 
-    public void setQuackBehaviour(QuackBehaviour qb) {
-        quackBehaviour = qb;
+    public void setQuackBehaviour(QuackBehaviour quackBehaviour) {
+        this.quackBehaviour = quackBehaviour;
     }
 
     public String swim() {
